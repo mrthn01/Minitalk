@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melcuman <melcuman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: murathanelcuman <murathanelcuman@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:26:49 by murathanelc       #+#    #+#             */
-/*   Updated: 2024/03/24 17:23:31 by melcuman         ###   ########.fr       */
+/*   Updated: 2024/03/24 23:45:49 by murathanelc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	signal_handler(int signal, siginfo_t *info, void *context)
 	static int	pid_id;
 
 	c = 0;
+	(void) context;
 	pid_id = info->si_pid;
 	bin_to_char(signal, &c);
 	if (++i == 8)
@@ -53,8 +54,6 @@ int	main(void)
 	ft_printf("[+]Server PID is: %d\n", getpid());
 	sigaction(SIGUSR1, &action, NULL);
 	sigaction(SIGUSR2, &action, NULL);
-	if (sigaction(SIGUSR1, &action, NULL) == -1 || sigaction(SIGUSR1, &action, NULL) == -1)
-			ft_error();
 	while (1)
 		pause();
 }

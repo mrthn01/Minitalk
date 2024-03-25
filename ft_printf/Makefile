@@ -12,8 +12,8 @@ FLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJS)
-		$(CC) $(FLAGS) -c $(SRCS)
-		ar rc $(NAME) $(OBJS)
+		@$(CC) $(FLAGS) -c $(SRCS)
+		@ar rc $(NAME) $(OBJS)
 
 clean:
 		$(RM) $(OBJS)
