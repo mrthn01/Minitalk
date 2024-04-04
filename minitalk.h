@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melcuman <melcuman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: murathanelcuman <murathanelcuman@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 22:31:59 by murathanelc       #+#    #+#             */
-/*   Updated: 2024/03/24 17:31:06 by melcuman         ###   ########.fr       */
+/*   Updated: 2024/04/04 13:49:02 by murathanelc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,8 @@
 # include <stdlib.h>
 # include "ft_printf/ft_printf.h"
 
-void	signal_handler(int signal, siginfo_t *info, void *context);
-void	bin_to_char(int signum, char *c);
-void	sig_handler(int signumber, siginfo_t *info, void *context);
-int		char_to_binary(char c, int pid);
-int		ft_atoi(const char *s);
+void	signal_handler(int signal);
+void	bit_handler(int pid, char str);
 void	ft_error(void);
 
 #endif
