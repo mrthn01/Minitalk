@@ -6,7 +6,7 @@
 /*   By: murathanelcuman <murathanelcuman@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:26:49 by murathanelc       #+#    #+#             */
-/*   Updated: 2024/04/04 13:50:52 by murathanelc      ###   ########.fr       */
+/*   Updated: 2024/04/04 14:36:42 by murathanelc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 void	signal_handler(int signal)
 {
-	static char	c;
-	static int	i;
+	static char	c = 0;
+	static int	i = 0;
 
-	c = 0;
-	i = 0;
 	if (signal == SIGUSR1)
 		c = c | (1 << i);
 	i++;

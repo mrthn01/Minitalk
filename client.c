@@ -6,7 +6,7 @@
 /*   By: murathanelcuman <murathanelcuman@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:26:53 by murathanelc       #+#    #+#             */
-/*   Updated: 2024/04/04 13:54:37 by murathanelc      ###   ########.fr       */
+/*   Updated: 2024/04/04 14:36:06 by murathanelc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,16 @@ void	ft_error(void)
 {
 	write(2, "Error\n", 6);
 	exit(1);
+}
+
+static int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != 0)
+		i++;
+	return (i);
 }
 
 static int	ft_atoi(const char *s)
@@ -46,20 +56,24 @@ static int	ft_atoi(const char *s)
 void	bit_handler(int pid, char str)
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while (i < 8)
+	while (i <= length)
 	{
-		if ((str >> i) & 1)
-			kill(pid, SIGUSR1);
-		else
-			kill(pid, SIGUSR2);
+		j = 0;
+		while (j < 7)
+		{
+			if ((str >> j) & 1)
+				kill(pid, SIGUSR1);
+			else
+				kill(pid, SIGUSR2);
+			j++;
+			usleep(300);
+		}
 		i++;
-		usleep(100);
 	}
-		
 }
-
 
 int	main(int argc, char **argv)
 {
@@ -67,15 +81,13 @@ int	main(int argc, char **argv)
 	int		pid;
 	int		i;
 
-	if (argc == 3)
+	str = argv[2];
+	ft_printf("%s\n", str);
+	if (argc == 3 && str != NULL)
 	{
-		str = argv[2];
-		if (!str)
-			ft_error();
 		pid = ft_atoi(argv[1]);
 		if (pid < 0)
 			ft_error();
-		i = 0;
 		while (str[i])
 		{
 			bit_handler(pid, str[i]);
